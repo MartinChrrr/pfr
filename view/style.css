@@ -1,0 +1,197 @@
+/* Import property from figma */
+/* color */
+/* dark */
+.dark1 {
+    background-color: #1B1F23;
+}
+
+.dark2 {
+    background-color: #1F222A;
+}
+
+.dark3 {
+    background-color: #35383F;
+}
+
+/* Primary */
+
+
+.primary500 {
+    background-color: #2B6EA4;
+}
+
+.primary400 {
+    background-color: #3485C6;
+}
+
+.primary300 {
+    background-color: #4993CF;
+}
+
+.primary200 {
+    background-color: #65A4D7;
+}
+
+/* Secondary */
+.secondary500 {
+    background-color: #FFD300;
+}
+
+.secondary400 {
+    background-color: #FFDC33;
+}
+
+.secondary300 {
+    background-color: #FFE566;
+}
+/* Alerts */
+
+.success {
+    background-color: #22D85E;
+}
+
+.info {
+    background-color: #2F80ED;
+}
+
+.warning {
+    background-color: #FBD746;
+}
+
+.error {
+    background-color: #EA1313;
+}
+
+
+/* Title */
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 120%;
+}
+
+h2 {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 120%;
+}
+
+h3 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 120%;
+}
+
+h4 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 120%;
+}
+
+h5 {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 120%;
+}
+h6 {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 120%;
+}
+
+
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    background-color: #1B1F23;
+    color:white;
+}
+
+.name-last-name {
+    display: flex;
+    flex-direction: row;
+}
+
+.name-last-name .field:first-child{
+    margin-right: 5%;
+}
+
+.name-last-name .field:last-child{
+    margin-left: 5%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+form .error_connexion {
+    width: 100%;
+    color:#721c24;
+    background-color: #f8d7da;
+    text-align: center;
+    border-radius: 5px;
+    border: 1 solid #f5c6cb;
+    margin-bottom: 10px;
+    display: none;
+}
+
+form .field {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+form .field .icon-password{
+    position: relative;
+    right: 10px;   
+}
+
+form .field .icon-left{
+    position: relative;
+    left: 10px;  
+}
+
+form .field input {
+    border: none;
+    color: white;
+    border-radius: 16px;
+    padding: 10px 5px 10px 45px;
+    font-size: 16px;
+    width: 100%;
+}
+
+form .connexion-button{
+    color: #fff;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 16px;
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+form .connexion-button input{
+    color: #fff;
+    padding: 10px 5px 10px 45px;
+    border: none;
+    
+}
+
+form .link-connexion a{
+    text-decoration: none;
+    color:#2B6EA4;
+}
