@@ -1,26 +1,53 @@
-<?php
-// Variables de connexion à la base de données
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "projetfilrouge";
 
-//initialisation de la connexion
-$connexion = new mysqli($servername, $username, $password, $dbname);
-
-//vérification effectuée lors de la connexion
-if($connexion->connect_error) {
-    die("Echec de la connexion : " . $connexion->connect_error);
-}
-
-?>
-
-<?php
-    require("view/connexion.php");  
-    // require("view/header.php");
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
     
-    // require("view/tabBar.php");
+    <title>Inscription</title>
 
-?>
+</head>
+<body>
+    <h1>App de merde</h1>
+    <form action="./phpLogic/signup.php" method="post">
+        <div class="error_connexion">Error</div>
+        <div class="field dark2">
+            <i data-lucide="user-round" class="icon-left"></i>
+            <input class="dark2" name="pseudo" type="text" placeholder="Identifiant" required>
+        </div>
+        <div class="name-last-name">
+            <div class="field dark2">
+                <input class="dark2 " name="nom" type="text" placeholder="Nom" required>
+            </div>
+            <div class="field dark2">
+                <input class="dark2 " name="prenom" type="text" placeholder="Prénom" required>
+            </div>
 
-
+        </div>
+        <div class="field dark2">
+            <i data-lucide="mail" class="icon-left"></i>
+            <input class="dark2" name="email" type="email" placeholder="email" required>
+        </div>
+        <div class="field dark2">
+            <i data-lucide="lock-keyhole" class="icon-left"></i>
+            <input class="dark2" type="password" name="password" id="password-field" placeholder="Password" required>
+            <i data-lucide="eye-off" class="icon-password" onclick="showPswrd()"  id="eye"></i>
+        </div>
+        
+            <div class="connexion-button primary500">
+                <input type="submit" class="primary500" placeholder="S'inscrire">
+            </div>
+        
+        <div class="link-connexion medium-regular">
+            Vous avez déjà un compte ? <a href="./view/connexion.php">Se connecter</a>
+        </div>
+        
+    </form>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+</html>
