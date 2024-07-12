@@ -41,7 +41,7 @@
             </div>
         
         <div class="link-connexion medium-regular">
-            Vous avez déjà un compte ? <a href="./view/connexion.php">Se connecter</a>
+            Vous avez déjà un compte ? <a href="connexion.php">Se connecter</a>
         </div>
         
     </form>

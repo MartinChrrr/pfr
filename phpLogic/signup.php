@@ -27,6 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     echo "Nouvel enregistrement ajouté avec succès.";
                     $_SESSION['id'] = $id;
                     $_SESSION['nom_utilisateur'] = $pseudo;
+                    header("Location:../profile.php");
                 } else {
                     echo "Erreur : " . $sql_insert . "<br>" . $connexion->error;
                 }

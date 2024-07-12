@@ -22,8 +22,12 @@
         $db_pass = $row['password'];
         if($in_pass == $db_pass) {
             echo "bien";
+            $id = $row['id'];
+            $pseudo = $row['pseudo'];
             $_SESSION['id'] = $id;
             $_SESSION['nom_utilisateur'] = $pseudo;
+            var_dump($_SESSION);
+            header("Location:../profile.php");
         } else {
             echo "email ou mot de passe incorrect";
         }
