@@ -46,6 +46,7 @@
         
     </form>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="./view/toggle.js"></script>
     <script>
       lucide.createIcons();
     </script>
