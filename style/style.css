@@ -190,6 +190,13 @@ form .field input {
     outline: none;
 }
 
+form .field:has(>input:focus) {
+    border: white 1px solid;
+    
+}
+
+
+
 form .field input:focus {
     outline: none;
 }
@@ -216,3 +223,61 @@ form .link-connexion a{
     text-decoration: none;
     color:#2B6EA4;
 }
+
+/* tabBar */
+
+.tab-bar {
+    height: 10vh;
+    width: 100vw;
+    position: fixed;
+    top: 80vh;
+    display: flex;
+    background-color: #1e2022c0;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2vh 5vw;
+}
+
+.tab-main {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(163,90,255,1) 0%, rgba(235,65,167,1) 100%);
+    position: relative;
+    bottom: 20px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.tab-bar .active{
+    color: #2B6EA4;
+    
+}
+
+.tab-bar .inactive {
+    color: white;
+}
+.tab-icon {
+    cursor: pointer;
+}
+
+/* jeux */
+
+.image-jeux {
+    width: 160px;
+    height: 200px;
+}
+
+.liste-jeux .jeu input {
+    visibility: hidden;
+}
+
+.liste-jeux .jeu input[type=checkbox]:checked + label {
+    opacity: 50%;
+    outline: 5px solid white;
+  } 
+  
