@@ -104,7 +104,81 @@ h6 {
     line-height: 140%;
 }
 
+/*Custom CheckBox */
 
+/* Customize the label (the container) */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 30%;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .jeu:hover input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    opacity: 20%;
+    border-radius: 5px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .jeu:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .jeu input:checked ~ .checkmark {
+    background-color: #2B6EA4;
+    opacity: 100%;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .jeu input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .jeu .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+/* CSS vrai */
 
 
 body {
@@ -195,6 +269,78 @@ form .field:has(>input:focus) {
     
 }
 
+form .field input[type="date"] {
+    color-scheme: dark;
+  }
+
+  form .field input[type="file"] {
+    color-scheme: dark;
+    background-color: #1B1F23;
+  }
+
+  form .field input[type="file"]::file-selector-button {
+    color-scheme: dark;
+    outline: none;
+    border: none;
+    background-color: #1B1F23;
+  }
+  
+form .field textarea {
+    border: none;
+    color: white;
+    border-radius: 16px;
+    padding: 10px 5px 10px 45px;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+}
+
+form .field select {
+    border: none;
+    color: white;
+    border-radius: 16px;
+    padding: 10px 5px 10px 45px;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+}
+
+form .field select[multiple] {
+    border: none;
+    color: white;
+    border-radius: 16px;
+    padding-left: 2;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+    background-color: #1B1F23;
+}
+
+
+
+form .field select[multiple] option {
+    background-color: #1B1F23;
+    border: none;
+    color: white;
+    
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+}
+form .field select option:checked  {
+    background-color:#2B6EA4
+}
+
+form .field:has(>select:focus) {
+    border: white 1px solid;
+    
+}
+
+form .field:has(>textarea:focus) {
+    border: white 1px solid;
+    
+}
+
 
 
 form .field input:focus {
@@ -267,17 +413,32 @@ form .link-connexion a{
 
 /* jeux */
 
-.image-jeux {
-    width: 160px;
-    height: 200px;
+.liste-jeux {
+    display: flex;
+    flex-wrap: wrap;
+    
 }
 
-.liste-jeux .jeu input {
-    visibility: hidden;
+.liste-jeux .jeu {
+    margin: 3% 5%;
+}
+
+.image-jeux {
+    width: 60px;
+    height: 75px;
+    border-radius: 10px;
+}
+
+.liste-jeux .jeu input[type=checkbox] {
+    display: none;
+}
+
+.liste-jeux .jeu input[type=checkbox]:checked {
+    display: none;
 }
 
 .liste-jeux .jeu input[type=checkbox]:checked + label {
-    opacity: 50%;
-    outline: 5px solid white;
+    border-radius: 10px;
+    outline: 3px solid #2B6EA4;
   } 
   

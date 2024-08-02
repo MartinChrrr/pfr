@@ -50,6 +50,7 @@ if ($result->num_rows > 0) {
         <input type="checkbox" id="'
         . $row['id'] .'" />
         <label for="'. $row['id'] .'"><img class="image-jeux" src="'. $row['image'] .' "/></label>
+        
         </div>';
     }
 
