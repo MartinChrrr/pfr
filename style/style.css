@@ -104,6 +104,11 @@ h6 {
     line-height: 140%;
 }
 
+.large-regular {
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0.2px;
+}
 /*Custom CheckBox */
 
 /* Customize the label (the container) */
@@ -365,6 +370,27 @@ form .connexion-button input{
     border: none;
 }
 
+form .sticky-button{
+    color: #fff;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 16px;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    position: fixed;
+    top: 80vh;
+    width: 60%;
+}
+
+form .sticky-button input{
+    color: #fff;
+    padding: 10px 5px 10px 5px;
+    border: none;
+}
+
+
 form .link-connexion a{
     text-decoration: none;
     color:#2B6EA4;
@@ -442,3 +468,6 @@ form .link-connexion a{
     outline: 3px solid #2B6EA4;
   } 
   
+header {
+    text-align: center;
+}

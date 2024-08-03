@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $genre = $_POST["genre"];
     //$horaire = $_POST["horaire"];
     
-    $birthday = strtotime($_POST["birthday"]);
+    $birthday = date('Y-m-d' ,strtotime($_POST["birthday"]));
     var_dump($birthday);
     $bio = $_POST["bio"];
     $stream = $_POST["stream"];
@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     }
     if($id === $id_input) {
-        $sql_insertProfile = "UPDATE profil SET biographie = '$bio', birthday = $birthday, stream = '$stream' , genre = '$genre' 
+        $sql_insertProfile = "UPDATE profil SET biographie = '$bio', birthday = '$birthday', stream = '$stream' , genre = '$genre' 
         WHERE pseudo = '{$id}'";
         if ($connexion->query($sql_insertProfile) === TRUE) {
             header("./profile.php");
