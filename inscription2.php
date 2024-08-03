@@ -8,8 +8,8 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
     echo "bien";
 } else {
     // On retourne sur la page de connexion d'un utilisateur
-    echo "pas bien";
-    //header("Location:index.php");
+    //echo "pas bien";
+    header("Location:index.php");
 }
 
 

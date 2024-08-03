@@ -1,4 +1,5 @@
-<navbar class="tab-bar">
+<navbar >
+    <div class="tab-bar">
         <div id="home" class="tab-icon inactive" onclick="setInactive('home')">
             <i data-lucide="house"></i>
             
@@ -9,8 +10,8 @@
         </div> 
         <div class="tab-main">
             <i data-lucide="plus"></i>
-
         </div>
+        
         <div class="tab-icon active" id="chat"  onclick="setInactive('chat')">
             <i data-lucide="message-circle-more"  ></i>
           
@@ -19,8 +20,8 @@
             <i  data-lucide="user" ></i>
         </div>
         
- 
-    </navbar>
+    </div>
+</navbar>
 
     <script src="./view/bar.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>

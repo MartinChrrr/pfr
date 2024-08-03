@@ -397,12 +397,21 @@ form .link-connexion a{
 }
 
 /* tabBar */
-
-.tab-bar {
+body navbar {
     height: 10vh;
-    width: 100vw;
+    top: 90vh;
+    width: 100%;
+    background-color: #1e2022c0;
     position: fixed;
-    top: 80vh;
+    display: flex;
+    justify-content: center;
+}
+
+body navbar .tab-bar {
+    
+    width: 60%;
+    
+    
     display: flex;
     background-color: #1e2022c0;
     flex-direction: row;
@@ -470,4 +479,39 @@ form .link-connexion a{
   
 header {
     text-align: center;
+}
+
+
+/* Top Bar */
+
+.top-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 10vh;
+    top:0px;
+}
+
+.top-bar h4 {
+    margin: auto;
+}
+
+.button-top-bar {
+    background-color: #2B6EA4;
+    width: 24px;
+    height: 24px;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 6px;
+    
+}
+
+.button-top-bar-icon{
+    width: 16px;
+    height: 16px;
+    
 }
