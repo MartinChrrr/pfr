@@ -15,7 +15,29 @@
     ?>
 
 
+
+
+
 <?php
+
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    $jeux = $_POST['jeux'];
+    if(!empty($jeux)) {
+        $n = count($jeux);
+        //echo("You selected $n jeux: ");
+        $id = $_SESSION['id'];
+        for($i=0; $i < $n; $i++)
+        {
+            //echo($jeux[$i] . " ");
+            $jeu = (int)$jeux[$i];
+            $sql = "INSERT INTO jouer(id_jeux, id_profil) VALUES ('$jeu', '$id')";
+            if ($connexion->query($sql) === TRUE) {
+                echo 'bien';
+            }
+        }
+    }
+    var_dump($jeux);
+}
 
 ?>
 
@@ -37,20 +59,23 @@
 </head>
 
 <body>
+    <header>
+        <h1>Selectionnes tes jeux préférés</h1>
+        <p class="large-regular">Nous te recommanderons des amis et du contenu <br>en liens avec tes préférences.</p>
+    </header>
 
     <?php
 $sql_jeux = "SELECT * FROM jeux";
 $result = $connexion->query($sql_jeux);
-echo '<form action="">
+echo '<form action="#" method="POST">
 <div class="liste-jeux">';
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()){
         echo '<div class="jeu">
-        <input type="checkbox" id="'
+        <input type="checkbox" name="jeux[]" value="'. $row['id'] .'" id="'
         . $row['id'] .'" />
         <label for="'. $row['id'] .'"><img class="image-jeux" src="'. $row['image'] .' "/></label>
-        
         </div>';
     }
 
@@ -61,4 +86,8 @@ if ($result->num_rows > 0) {
 ?>
 
 </div>
+
+        <div class="sticky-button primary500">
+            <input class="primary500" type="submit" placeholder="Confirmer">
+        </div>
 </form>
