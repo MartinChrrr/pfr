@@ -16,6 +16,35 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
 ?>
 
 <?php
+    $id = $_SESSION['id'];
+    $bio; $image;
+
+
+    $sql_profil = "SELECT * FROM profil WHERE id = '{$id}'";
+    $result = $connexion->query($sql_profil);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        var_dump($row);
+        $bio = $row['biographie'];
+        $image = $row['photo'];
+        $dateNaissance = $row['birthday'];
+        $aujourdhui = date("Y-m-d");
+        $age = date_diff(date_create($dateNaissance), date_create($aujourdhui)) ->format('%y');
+        //echo 'Votre age est '.$age;
+    }
+
+    
+    $sql_jeux =  "SELECT * FROM jouer WHERE id_profil = '{$id}'";
+    $result_jeux = $connexion->query($sql_jeux);
+    $array_jeux = array();
+    if ($result_jeux->num_rows > 0) {
+        //$row2 = $result_jeux->fetch_assoc();
+        while($row = $result_jeux->fetch_assoc()){
+            array_push($array_jeux, (int)$row['id_jeux']);
+            //var_dump(($row));
+        }
+  
+    }
 
 ?>
 
@@ -42,10 +71,57 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
         <div class="button-top-bar">
             <i class="button-top-bar-icon" data-lucide="pen"></i>
         </div>
+
+
+
         
     </section>
 
+    <div class="profil-card">
+            <header>
+                <img src=" <?php echo $image; ?> ">
+                <div class="profil-text">
+                    <h5> <?php echo $_SESSION['nom_utilisateur']; ?> </h5>
+                    <div class="tags">
+                        <label class="tag">
+                            23ans
+                        </label>
+                        <label class="tag">
+                            23ans
+                        </label>
+                        <label class="tag">
+                            23ans
+                        </label>
+                    </div>
+                </div>
+            </header>
+            <p class="bio"> <?php echo $bio; ?> </p>
+            <p class="separation xlarge-semibold">Jeux</p>
+            <div class="jeux">
+                <ul>
+                    <?php 
+                        for($i = 0; $i < count($array_jeux); $i++) {
+                            $sql = "SELECT * FROM jeux WHERE id = '{$array_jeux[$i]}'";
+                            $result = $connexion->query($sql);
+                            if($result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+                                echo "<li>";
+                                echo "<img src='" . $row['image'] . "' alt= 'Image du jeu ". $row ['titre'] ."'>"; 
+                                echo "<p>" . $row['titre'] . "</p>";
+                                echo "</li>";
+                            }
+                        }
+                    
+                    
+                    
+                    ?>
 
+                </ul>
+            </div>
+            <p class="separation xlarge-semibold">Derniers Posts</p>
+            <br><br><br><br><br><br>
+
+        </div>
 
 <?php
     include("./view/tabBar.php");

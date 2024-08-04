@@ -109,6 +109,12 @@ h6 {
     line-height: 140%;
     letter-spacing: 0.2px;
 }
+
+.xlarge-semibold {
+    font-size: 18px;
+    line-height: 140%;
+    letter-spacing: 0.2px;
+}
 /*Custom CheckBox */
 
 /* Customize the label (the container) */
@@ -136,7 +142,7 @@ h6 {
   }
   
   /* Create a custom checkbox */
-  .checkmark {
+.checkmark {
     position: relative;
     top: 0;
     left: 0;
@@ -195,6 +201,10 @@ body {
     background-color: #1B1F23;
     color:white;
     margin:auto;
+}
+
+li {
+    list-style: none;
 }
 
 .name-last-name {
@@ -499,8 +509,8 @@ header {
 
 .button-top-bar {
     background-color: #2B6EA4;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     justify-self: end;
     display: flex;
     align-items: center;
@@ -511,7 +521,93 @@ header {
 }
 
 .button-top-bar-icon{
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     
+}
+
+/* Profil card */
+.profil-card {
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.profil-card > * {
+    margin-top: 20px;
+    margin-bottom: none;
+}
+
+.profil-card header {
+    display: flex;
+    height: 60px;
+    width: 100%;
+}
+
+.profil-card header img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+
+.profil-card header .profil-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+
+.profil-card header .profil-text h5 {
+    margin: 0 10px;
+}
+
+.profil-card header .profil-text .tags {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: end;
+}
+
+.profil-card header .profil-text .tags .tag {
+    background-color: #35383F;
+    padding: 6px 4px;
+    margin:0 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    color: white;
+    height: 27px;
+}
+
+.profil-card .separation {
+    color:#2B6EA4;
+    margin-bottom: 0px;
+}
+
+.profil-card .bio {
+    align-self: flex-start;
+}
+
+.profil-card .jeux {
+    width: 100%;
+}
+
+.profil-card .jeux li {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.profil-card .jeux li img {
+    height: 22px;
+    width: 22px;
+    border-radius: 11px;
+}
+
+
+.profil-card .jeux li p {
+    margin: auto;
 }
