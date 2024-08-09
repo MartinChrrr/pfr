@@ -5,7 +5,7 @@ session_start();
 if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisateur'] != null && $_SESSION['nom_utilisateur'] != "") {
     // Contenu de votre page
     $id = $_SESSION['nom_utilisateur'];
-    echo "bien";
+    //echo "bien";
 } else {
     // On retourne sur la page de connexion d'un utilisateur
     //echo "pas bien";
@@ -17,21 +17,39 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
 
 <?php
     $id = $_SESSION['id'];
-    $bio; $image;
+    $bio; $image; $genre;
 
 
     $sql_profil = "SELECT * FROM profil WHERE id = '{$id}'";
     $result = $connexion->query($sql_profil);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        var_dump($row);
+        //var_dump($row);
         $bio = $row['biographie'];
         $image = $row['photo'];
         $dateNaissance = $row['birthday'];
         $aujourdhui = date("Y-m-d");
         $age = date_diff(date_create($dateNaissance), date_create($aujourdhui)) ->format('%y');
+        $genre = $row['genre'];
+        $strHoraire = $row['horaires'];
+        $strTags = $row['tags'];
         //echo 'Votre age est '.$age;
     }
+    $horaire = explode(" ", $strHoraire);
+    $tags = explode(" ", $strTags);
+    // var_dump($tags);
+    // var_dump($horaire);
+
+    $HValues = array(
+    "minuit" => "00h-3h",
+    "trois" => "3h-6h",
+    "six" => "6h-9h",
+    "neuf" => "9h-12h",
+    "douze"=> "12h-15h",
+    "quinze" => "15h-18h",
+    "dixhuit" => "18h-21h",
+    "vingtun" => "21h-00h",
+    );
 
     
     $sql_jeux =  "SELECT * FROM jouer WHERE id_profil = '{$id}'";
@@ -84,14 +102,28 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
                     <h5> <?php echo $_SESSION['nom_utilisateur']; ?> </h5>
                     <div class="tags">
                         <label class="tag">
-                            23ans
+                            <?php echo $age . " ans" ;?>
                         </label>
                         <label class="tag">
-                            23ans
+                            <?php echo $genre;?>
                         </label>
-                        <label class="tag">
-                            23ans
-                        </label>
+                        <?php
+                        foreach($tags as $t) {
+                            echo "<label class='tag'>
+                                ". $t ."
+                            </label>
+                            ";
+                        }
+
+                        foreach($horaire as $h) {
+                            echo "<label class='tag'>
+                                ". $HValues[$h] ."
+                            </label>
+                            ";
+                        }
+
+
+                        ?>
                     </div>
                 </div>
             </header>
