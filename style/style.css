@@ -13,6 +13,12 @@
     background-color: #35383F;
 }
 
+/* Greyscale */
+
+.greyscale300 {
+    color : #E0E0E0;
+}
+
 /* Primary */
 
 
@@ -62,6 +68,9 @@
     background-color: #EA1313;
 }
 
+img {
+    object-fit: cover;
+}
 
 /* Title */
 h1 {
@@ -646,4 +655,48 @@ header {
 
 .profil-card .jeux li p {
     margin: auto;
+}
+
+/* Chats list */
+
+.list-chats {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-chats .chat-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 80px;
+    width:100%;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    border-bottom: #ffffff16 1px solid;
+}
+
+.list-chats .chat-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.list-chats .chat-card .chat-card-text {
+    display: flex;
+    flex-direction: column;
+   
+    height: 60px;
+    margin-left: 1em;
+
+}
+
+.list-chats .chat-card p {
+    justify-self: flex-end;
+    
+}
+
+.list-chats .chat-card .chat-card-text h5::first-letter{
+    text-transform: capitalize;
 }
