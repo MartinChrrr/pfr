@@ -406,6 +406,40 @@ form .link-connexion a{
     color:#2B6EA4;
 }
 
+/* Inscription 3 */
+
+form .list-checkbox-button {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+form .list-checkbox-button input {
+   display: none;
+}
+
+form .list-checkbox-button .checkbox-button {
+    width: 30%;
+    margin-top: 1em;
+    margin-right: 3%;
+    border-radius: 16px;
+    outline: 1px solid #2B6EA4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2B6EA4;
+    padding: 5px 0;
+    
+}
+
+form .list-checkbox-button .checkbox-button:has(input:checked) {
+    outline: 1px solid #2B6EA4;
+    background-color: #2B6EA4;
+    color: white;
+}
+
+
+
 /* tabBar */
 body navbar {
     height: 10vh;
@@ -572,12 +606,14 @@ header {
 
 .profil-card header .profil-text .tags .tag {
     background-color: #35383F;
-    padding: 6px 4px;
+    padding: 12px 8px;
     margin:0 10px;
-    border-radius: 6px;
+    border-radius: 16px;
     font-size: 10px;
     color: white;
     height: 27px;
+    display: flex;
+    align-items: center;
 }
 
 .profil-card .separation {
@@ -598,13 +634,13 @@ header {
     flex-direction: row;
     width: 100%;
     align-items: center;
-    margin-top: 8px;
+    margin-top: 1em;
 }
 
 .profil-card .jeux li img {
-    height: 22px;
-    width: 22px;
-    border-radius: 11px;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
 }
 
 
