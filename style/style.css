@@ -124,6 +124,10 @@ h6 {
     line-height: 140%;
     letter-spacing: 0.2px;
 }
+
+a {
+    text-decoration: none;
+}
 /*Custom CheckBox */
 
 /* Customize the label (the container) */
@@ -686,10 +690,15 @@ header {
 .list-chats .chat-card .chat-card-text {
     display: flex;
     flex-direction: column;
-   
+   width: 80%;
     height: 60px;
     margin-left: 1em;
+    cursor: pointer;
 
+}
+
+.list-chats .chat-card h5 {
+    color: white;
 }
 
 .list-chats .chat-card p {
