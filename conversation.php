@@ -54,12 +54,13 @@
             array_push($messages, $row['message']);
             array_push($idUsers, $row["id_user"]);
         }
-    } else {
-        echo 'nul';
+    } 
+    
+    if($_SERVER['REQUEST_METHOD'] == "POST") {
+        $bah = $_POST['message'];
+        echo $bah;
     }
 
-    var_dump($idUsers);
-    var_dump($messages);
 
 ?>
 
@@ -95,17 +96,26 @@
         </div>
     </section>
 
-    <section class="other-conv">
+    <a href="#"  class="other-conv">
         <img src="<?php echo $otherPhoto?>" alt="Image de profil de <?php echo $otherName?>">
         <h4><?php echo $otherName?></h4>
-    </section>
+    </a>
 
 
 
 
 
 
+    <navbar class="message-bar">
+        <form action="#" method="post">
+         
+            <textarea class="dark2" type="text" name="message" placeholder="Ecrire une message"></textarea>
+           
+            <label for="message-sender" class="label-input"> <i class="button-top-bar-icon" data-lucide="send"></i></label>
+            <input class="primary500"  type="submit" id="message-sender" placeholder="Continuer">
+        </form>
 
+    </navbar>
 
 
 
