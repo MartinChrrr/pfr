@@ -17,7 +17,29 @@
     $idUsers = array();
     $messages = array();
 
-    
+
+    $sql_contact_import = "SELECT * FROM conversation WHERE id = '$conv_id'";
+    $contact = $connexion->query($sql_contact_import);
+    if($contact ->num_rows > 0) {
+        while($row = $contact->fetch_assoc()) {
+           
+            if($row['id_user1'] == $id) {
+                $id_user2 = $row['id_user2'];
+            } else {
+                $id_user2 = $row['id_user1'];
+            }
+        }
+    }
+
+    $sql_other_profil = "SELECT pseudo, photo FROM profil WHERE id = '$id_user2'";
+    $sql_result = $connexion->query($sql_other_profil);
+    if($sql_result ->num_rows > 0) {
+        while($row = $sql_result->fetch_assoc()) {
+           $otherPhoto = $row['photo'];
+           $otherName = $row['pseudo'];
+        }
+    }
+
 
     $sql_messages_import = "SELECT * FROM messages WHERE conv_id = '$conv_id'";
     $result = $connexion->query($sql_messages_import);
@@ -74,7 +96,8 @@
     </section>
 
     <section class="other-conv">
-        <img src="" alt="">
+        <img src="<?php echo $otherPhoto?>" alt="Image de profil de <?php echo $otherName?>">
+        <h4><?php echo $otherName?></h4>
     </section>
 
 
