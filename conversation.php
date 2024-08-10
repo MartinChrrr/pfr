@@ -7,6 +7,7 @@
     if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisateur'] != null && $_SESSION['nom_utilisateur'] != "") {
     // Contenu de votre page
         $id = $_SESSION['nom_utilisateur'];
+        $sessID = $_SESSION['id'];
     //echo "bien";
     } else {
     // On retourne sur la page de connexion d'un utilisateur
@@ -59,7 +60,7 @@
     if($_SERVER['REQUEST_METHOD'] == "POST") {
         $message = $_POST['message'];
 
-        $sql_input_message = "INSERT INTO messages (conv_id, id_user, message) VALUES ('$conv_id','$id', '$message') ";
+        $sql_input_message = "INSERT INTO messages (conv_id, id_user, message) VALUES ('$conv_id','$sessID', '$message') ";
         if ($connexion->query($sql_input_message) === TRUE) {
             
         }
@@ -114,8 +115,26 @@
     <div class="messages-container">
 
     <?php
-        var_dump($messages);
-        var_dump($idUsers);
+        for($i = 0; $i < count($idUsers); $i++) {
+            if($idUsers[$i] == $sessID) {
+                echo "<div class='chat outgoing'>
+                    <p>" . $messages[$i] ."</p>
+                
+                </div>
+                ";
+            } else {
+                echo "<div class='chat incoming'>
+                <img src=". $otherPhoto. " alt='Image de profil de ". $otherName."'>
+                <p>" . $messages[$i] ."</p>
+            
+            </div>
+            ";
+            }
+
+
+
+        }
+
     ?>
     </div>
     <br><br><br>
