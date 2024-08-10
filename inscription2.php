@@ -16,8 +16,7 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
 $sql_import = "SELECT * FROM profil WHERE id = '{$id}'";
 $import = $connexion->query($sql_import);
 $row = $import->fetch_assoc();
-$date = getdate();
-var_dump($date);
+
 
 //récupération des données
 if($_SERVER['REQUEST_METHOD'] == "POST") {

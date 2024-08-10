@@ -57,9 +57,19 @@
     } 
     
     if($_SERVER['REQUEST_METHOD'] == "POST") {
-        $bah = $_POST['message'];
-        echo $bah;
+        $message = $_POST['message'];
+
+        $sql_input_message = "INSERT INTO messages (conv_id, id_user, message) VALUES ('$conv_id','$id', '$message') ";
+        if ($connexion->query($sql_input_message) === TRUE) {
+            
+        }
+        $lastMessage = $_SESSION['nom_utilisateur'] . ": " . substr($message,0,15);
+        $sql_last_message = "UPDATE conversation SET messages='$lastMessage' WHERE id='$conv_id'";
+        if ($connexion->query($sql_last_message) === TRUE) {
+            
+        }
     }
+
 
 
 ?>
@@ -87,9 +97,9 @@
 
 <body>
     <section class="top-bar">
-        <div class="return-button-top-bar">
+        <a href="./chat.php" class="return-button-top-bar">
             <i class="button-top-bar-icon" data-lucide="arrow-left"></i>
-        </div>
+        </a>
         <h4>Chats</h4>
         <div class="button-top-bar">
             <i class="button-top-bar-icon" data-lucide="mail"></i>
@@ -101,6 +111,14 @@
         <h4><?php echo $otherName?></h4>
     </a>
 
+    <div class="messages-container">
+
+    <?php
+        var_dump($messages);
+        var_dump($idUsers);
+    ?>
+    </div>
+    <br><br><br>
 
 
 
