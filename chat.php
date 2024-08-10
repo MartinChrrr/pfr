@@ -108,7 +108,7 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
                 echo "
                 <div class='chat-card'>
                    <img src= '". $otherPictures[$i] ."'>
-                   <a href='conversation.php?id=\"". $convIDs[$i]."\"' class='chat-card-text'>
+                   <a href='conversation.php?id=". $convIDs[$i]."' class='chat-card-text'>
                        <h5>". $otherName[$i]  ." </h5> 
                         <p class='medium-regular greyscale300'>". $messages[$i] ."</p>
                     </a>

@@ -554,6 +554,20 @@ header {
     margin: auto;
 }
 
+.return-button-top-bar {
+    background-color: #1F222A;
+    width: 56px;
+    height: 56px;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 16px;
+    outline: #35383F 1px solid;
+    
+}
+
 .button-top-bar {
     background-color: #2B6EA4;
     width: 56px;
@@ -564,6 +578,7 @@ header {
     justify-content: center;
     cursor: pointer;
     border-radius: 16px;
+    outline: #2B6EA4 1px solid;
     
 }
 
@@ -572,6 +587,8 @@ header {
     height: 20px;
     
 }
+
+
 
 /* Profil card */
 .profil-card {
