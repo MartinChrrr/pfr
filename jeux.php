@@ -32,7 +32,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             $jeu = (int)$jeux[$i];
             $sql = "INSERT INTO jouer(id_jeux, id_profil) VALUES ('$jeu', '$id')";
             if ($connexion->query($sql) === TRUE) {
-                echo 'bien';
+                //echo 'bien';
+                header("");
             }
         }
     }

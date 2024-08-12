@@ -15,6 +15,20 @@
         header("Location:index.php");
     }
 
+    if($_SERVER['REQUEST_METHOD'] == "POST") {
+        $message = $_POST['message'];
+
+        $sql_input_message = "INSERT INTO messages (conv_id, id_user, message) VALUES ('$conv_id','$sessID', '$message') ";
+        if ($connexion->query($sql_input_message) === TRUE) {
+            
+        }
+        $lastMessage = $_SESSION['nom_utilisateur'] . ": " . substr($message,0,15);
+        $sql_last_message = "UPDATE conversation SET messages='$lastMessage' WHERE id='$conv_id'";
+        if ($connexion->query($sql_last_message) === TRUE) {
+            
+        }
+    }
+
     $idUsers = array();
     $messages = array();
 
@@ -57,20 +71,6 @@
         }
     } 
     
-    if($_SERVER['REQUEST_METHOD'] == "POST") {
-        $message = $_POST['message'];
-
-        $sql_input_message = "INSERT INTO messages (conv_id, id_user, message) VALUES ('$conv_id','$sessID', '$message') ";
-        if ($connexion->query($sql_input_message) === TRUE) {
-            
-        }
-        $lastMessage = $_SESSION['nom_utilisateur'] . ": " . substr($message,0,15);
-        $sql_last_message = "UPDATE conversation SET messages='$lastMessage' WHERE id='$conv_id'";
-        if ($connexion->query($sql_last_message) === TRUE) {
-            
-        }
-    }
-
 
 
 ?>
