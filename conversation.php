@@ -155,7 +155,7 @@
     </navbar>
 
 
-
+    <script src="./view/chat.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         lucide.createIcons();

@@ -1,10 +1,10 @@
 <navbar >
     <div class="tab-bar">
-        <div id="home" class="tab-icon inactive" onclick="setInactive('home')">
+        <div id="home" class="tab-icon " onclick="setInactive('home')">
             <i data-lucide="house"></i>
             
         </div>
-        <div class="tab-icon inactive" id="calendrier"  onclick="setInactive('calendrier')">
+        <div class="tab-icon " id="calendrier"  onclick="setInactive('calendrier')">
             <i data-lucide="calendar-days"></i>
          
         </div> 
@@ -12,11 +12,12 @@
             <i data-lucide="plus"></i>
         </div>
         
-        <div class="tab-icon active" id="chat"  onclick="setInactive('chat')">
+        <div class="tab-icon " id="chat"  onclick="setInactive('chat')">
             <i data-lucide="message-circle-more"  ></i>
           
         </div>
-        <div class="tab-icon inactive" id="profil"  onclick="setInactive('profil')">
+
+        <div  class="tab-icon " id="profil"  onclick="setInactive('profil')">
             <i  data-lucide="user" ></i>
         </div>
         

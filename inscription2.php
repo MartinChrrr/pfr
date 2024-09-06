@@ -18,6 +18,7 @@ $import = $connexion->query($sql_import);
 $row = $import->fetch_assoc();
 
 
+
 //récupération des données
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     $id_input = $_POST["pseudo"];
@@ -55,7 +56,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $sql_insertProfile = "UPDATE profil SET biographie = '$bio', birthday = '$birthday', stream = '$stream' , genre = '$genre' 
         WHERE pseudo = '{$id}'";
         if ($connexion->query($sql_insertProfile) === TRUE) {
-            header("./profile.php");
+            header("Location: ./inscription3.php");
         }else{
             echo "Erreur : " . $sql_insert . "<br>" . $connexion->error;
         }
@@ -101,19 +102,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             </select>
         </div>
 
-        <!-- Horaire de jeux
-        <div class="field dark2">
-            <select name="horaire" id="cars" multiple>
-                <option value="minuit">00h-3h</option>
-                <option value="trois">3h-6h</option>
-                <option value="six">6h-9h</option>
-                <option value="neuf">9h-12h</option>
-                <option value="douze">12h-15h</option>
-                <option value="quinze">15h-18h</option>
-                <option value="dixhuit">18h-21h</option>
-                <option value="vinghtun">21h-00h</option>
-            </select>
-        </div> -->
+
 
         <p>Image</p>
         <div class="field dark2">

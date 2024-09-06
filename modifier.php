@@ -4,8 +4,8 @@ session_start();
 //var_dump($_SESSION);
 if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisateur'] != null && $_SESSION['nom_utilisateur'] != "") {
     // Contenu de votre page
-    $id = $_SESSION['nom_utilisateur'];
-    echo "bien";
+    $id = $_SESSION['id'];
+   
 } else {
     // On retourne sur la page de connexion d'un utilisateur
     //echo "pas bien";
@@ -13,46 +13,23 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
 }
 
 
-$sql_import = "SELECT * FROM profil WHERE id = '{$id}'";
+$sql_import = "SELECT * FROM profil WHERE id = '$id'";
 $import = $connexion->query($sql_import);
-$row = $import->fetch_assoc();
+if($import->num_rows > 0) {
+    echo "test";
+    $row = $import->fetch_assoc();
+    //var_dump($row);
+    $donnéeGenre = $row['genre'];
+    $donnéeBio = $row['biographie'];
+    $donnéeStream = $row['stream'];
+    $donnéeTags = explode(" ", $row['tags']) ;
+    
+}
 
-// <option value="minuit">00h-3h</option>
-// <option value="trois">3h-6h</option>
-// <option value="six">6h-9h</option>
-// <option value="neuf">9h-12h</option>
-// <option value="douze">12h-15h</option>
-// <option value="quinze">15h-18h</option>
-// <option value="dixhuit">18h-21h</option>
-// <option value="vinghtun">21h-00h</option>
 $values = array("00h-3h", "3h-6h", "6h-9h", "9h-12h", "12h-15h", "15h-18h", "18h-21h", "21h-00h");
 $key = array ( "minuit", "trois", "six" , "neuf", "douze",  "quinze" , "dixhuit", "vingtun");
 
 $tags = array("Nul", "Nulles", "Nulle");
-
-// $horaire = array(
-//     $key[0] => $values[0],
-//     $key[1] => $values[1],
-//     $key[2] => $values[2],
-//     $key[3] => $values[3],
-//     $key[4] => $values[4],
-//     $key[5] => $values[5],
-//     $key[6] => $values[6],
-//     $key[7] => $values[7],
-
-// );
-
-// $horaire = array(
-//     "minuit" => "00h-3h",
-//     "trois" => "3h-6h",
-//     "six" => "6h-9h",
-//     "neuf" => "9h-12h",
-//     "douze"=> "12h-15h",
-//     "quinze" => "15h-18h",
-//     "dixhuit" => "18h-21h",
-//     "vingtun" => "21h-00h",
-
-// );
 
 
 
@@ -98,24 +75,63 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     </header>
     <form action="#" method="post">
 
-
-
-
-        <!-- Horaire de jeux
+    <p>Genre</p>
         <div class="field dark2">
-            <select name="horaire" id="cars" multiple>
-                <option value="minuit">00h-3h</option>
-                <option value="trois">3h-6h</option>
-                <option value="six">6h-9h</option>
-                <option value="neuf">9h-12h</option>
-                <option value="douze">12h-15h</option>
-                <option value="quinze">15h-18h</option>
-                <option value="dixhuit">18h-21h</option>
-                <option value="vinghtun">21h-00h</option>
+            <select class="dark2" name="genre">
+
+
+                <option value="panda"             
+                <?php
+                    if($donnéeGenre == "panda") echo " selected ";
+                ?>
+                >
+                Panda</option>
+                <option value="humain"
+                <?php
+                    if($donnéeGenre == "humain") echo " selected ";
+                ?>
+                >
+                >Humain</option>
+                <option value="robot"                 
+                <?php
+                    if($donnéeGenre == "robot") echo " selected ";
+                ?>
+                >Robot</option>
+
             </select>
-        </div> -->
+        </div>
 
 
+
+        <p>Image</p>
+        <div class="field dark2">
+
+            <input class="dark2" type="file" accept="image/*" name="image">
+
+        </div>
+
+
+
+        <p>Date de naissance</p>
+        <div class="field dark2">
+
+            <input class="dark2" type="date" name="birthday" >
+
+        </div>
+
+        <p>Bio</p>
+        <div class="field dark2">
+            <textarea class="dark2" type="text" name="bio" 
+            <?php
+            echo 'value = "'.$donnéeBio.'"' 
+            ?>
+            rows="5"></textarea>
+        </div>
+
+        <p>Stream</p>
+        <div class="field dark2">
+            <textarea class="dark2" type="text" name="stream" placeholder="Ton lien Twitch" rows="1"></textarea>
+        </div>
         <p>Horaires De jeux</p>
 
         <div class="list-checkbox-button">
@@ -144,6 +160,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         <div class="list-checkbox-button">
             <?php
             for($i = 0; $i < count($tags); $i++) {
+                
                 echo 
                     "<div class='checkbox-button'>
                         <input type='checkbox' name='player-tags[]' value='" . $tags[$i] ."' id ='". $tags[$i] . "' >

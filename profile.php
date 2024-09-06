@@ -86,9 +86,9 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
 <body>
     <section class="top-bar">
         <h4>Mon Profil</h4>
-        <div class="button-top-bar">
+        <a href="./mesjeux.php" class="button-top-bar">
             <i class="button-top-bar-icon" data-lucide="pen"></i>
-        </div>
+        </a>
 
 
 
