@@ -19,10 +19,11 @@ if($import->num_rows > 0) {
     echo "test";
     $row = $import->fetch_assoc();
     //var_dump($row);
-    $donnéeGenre = $row['genre'];
-    $donnéeBio = $row['biographie'];
-    $donnéeStream = $row['stream'];
-    $donnéeTags = explode(" ", $row['tags']) ;
+    $donneeGenre = $row['genre'];
+    $donneeBio = $row['biographie'];
+    $donneeStream = $row['stream'];
+    $donneeTags = explode(" ", $row['tags']);
+    $donneeHoraires = explode(" ", $row['horaires']);
     
 }
 
@@ -82,19 +83,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 <option value="panda"             
                 <?php
-                    if($donnéeGenre == "panda") echo " selected ";
+                    if($donneeGenre == "panda") echo " selected ";
                 ?>
                 >
                 Panda</option>
                 <option value="humain"
                 <?php
-                    if($donnéeGenre == "humain") echo " selected ";
+                    if($donneeGenre == "humain") echo " selected ";
                 ?>
                 >
                 >Humain</option>
                 <option value="robot"                 
                 <?php
-                    if($donnéeGenre == "robot") echo " selected ";
+                    if($donneeGenre == "robot") echo " selected ";
                 ?>
                 >Robot</option>
 
@@ -110,27 +111,23 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
         </div>
 
-
+<!-- 
 
         <p>Date de naissance</p>
         <div class="field dark2">
 
             <input class="dark2" type="date" name="birthday" >
 
-        </div>
+        </div> -->
 
         <p>Bio</p>
         <div class="field dark2">
-            <textarea class="dark2" type="text" name="bio" 
-            <?php
-            echo 'value = "'.$donnéeBio.'"' 
-            ?>
-            rows="5"></textarea>
+            <textarea class="dark2" type="text" name="bio" placeholder="Ecriver une bio." rows="5"><?php echo $donneeBio ;?></textarea>
         </div>
 
         <p>Stream</p>
         <div class="field dark2">
-            <textarea class="dark2" type="text" name="stream" placeholder="Ton lien Twitch" rows="1"></textarea>
+            <textarea class="dark2" type="text" name="stream" placeholder="Ton lien Twitch" rows="1"><?php echo $donneeStream;?></textarea>
         </div>
         <p>Horaires De jeux</p>
 
@@ -139,7 +136,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             for($i = 0; $i < count($key); $i++) {
                 echo 
                     "<div class='checkbox-button'>
-                        <input type='checkbox' name='player-horaire[]' value='" . $key[$i] ."' id ='". $key[$i] . "' >
+                        <input type='checkbox' name='player-horaire[]' value='" . $key[$i] ."' id ='". $key[$i] . "'";
+                for($j = 0; $j < count($donneeHoraires); $j++ ) {
+                    if($key[$i] == $donneeHoraires[$j]) {
+                        echo " checked ";
+                    }
+                }       
+                        
+                echo ">
                         <label for='" . $key[$i] ."'> ". $values[$i]  ."
                         </label>
 
@@ -160,19 +164,26 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         <div class="list-checkbox-button">
             <?php
             for($i = 0; $i < count($tags); $i++) {
-                
-                echo 
-                    "<div class='checkbox-button'>
-                        <input type='checkbox' name='player-tags[]' value='" . $tags[$i] ."' id ='". $tags[$i] . "' >
-                        <label for='" . $tags[$i] ."'> ". $tags[$i]  ."
-                        </label>
+                echo "<div class='checkbox-button'>
+                <input type='checkbox' name='player-tags[]' value='" . $tags[$i] ."' id ='". $tags[$i] . "' " ; 
+                for($j = 0; $j < count($donneeTags); $j++) {
+                    
+
+                        if($tags[$i] == $donneeTags[$j]) {
+                            echo " checked ";
+                        }
+
+                    
+                }
+                echo "' >
+                <label for='" . $tags[$i] ."'> ". $tags[$i]  ."
+                </label>
 
 
 
-                    </div>"
-                
-                
-                ;
+            </div>"
+        ;
+
             }
             ?>
         </div>
