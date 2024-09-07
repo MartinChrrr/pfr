@@ -1,25 +1,25 @@
-<navbar >
+<navbar>
     <div class="tab-bar">
-        <div id="home" class="tab-icon " onclick="setInactive('home')">
+        <a id="home" class="tab-icon " >
             <i data-lucide="house"></i>
             
-        </div>
-        <div class="tab-icon " id="calendrier"  onclick="setInactive('calendrier')">
+        </a>
+        <a class="tab-icon " id="calendrier"  >
             <i data-lucide="calendar-days"></i>
          
-        </div> 
-        <div class="tab-main">
+        </a> 
+        <a class="tab-main">
             <i data-lucide="plus"></i>
-        </div>
+        </a>
         
-        <div class="tab-icon " id="chat"  onclick="setInactive('chat')">
+        <a href="../pfr/chat.php" class="tab-icon " id="chat"  >
             <i data-lucide="message-circle-more"  ></i>
           
-        </div>
+        </a>
 
-        <div  class="tab-icon " id="profil"  onclick="setInactive('profil')">
+        <a href="../pfr/profile.php"  class="tab-icon " id="profile"  >
             <i  data-lucide="user" ></i>
-        </div>
+        </a>
         
     </div>
 </navbar>
