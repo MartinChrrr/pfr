@@ -107,7 +107,7 @@
         </div>
     </section>
 
-    <a href="#"  class="other-conv">
+    <a href="other.php?id=<?php echo $id_user2?>"  class="other-conv">
         <img src="<?php echo $otherPhoto?>" alt="Image de profil de <?php echo $otherName?>">
         <h4><?php echo $otherName?></h4>
     </a>

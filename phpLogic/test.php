@@ -21,7 +21,7 @@
         $in_pass = md5($password);
         $db_pass = $row['password'];
         if($in_pass == $db_pass) {
-            echo "bien";
+            //echo "bien";
             $id = $row['id'];
             $pseudo = $row['pseudo'];
             $_SESSION['id'] = $id;
