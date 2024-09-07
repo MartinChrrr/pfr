@@ -88,10 +88,11 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
 
 <body>
     <section class="top-bar">
-        <h4>Profil de <?php echo $name?></h4>
-        <a href="./mesjeux.php" class="button-top-bar">
-            <i class="button-top-bar-icon" data-lucide="pen"></i>
+        <a href="javascript:history.go(-1)" class="return-button-top-bar">
+            <i class="button-top-bar-icon" data-lucide="arrow-left"></i>
         </a>
+        <h4>Profil de <?php echo $name?></h4>
+
 
 
 
