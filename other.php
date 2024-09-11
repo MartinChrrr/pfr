@@ -160,11 +160,11 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
         </div>
 
 <?php
-    include("./view/tabBar.php");
+    //include("./view/tabBar.php");
 ?>
     
-    <!-- <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         lucide.createIcons();
     </script>
-</body> -->
+</body>

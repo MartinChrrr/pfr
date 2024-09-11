@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $sql_insertProfile = "UPDATE profil SET horaires = '$str_horaire',tags = '$str_tags'  WHERE pseudo = '{$id}'";
         if ($connexion->query($sql_insertProfile) === TRUE) {
-            header("Location: ./profile.php");
+            header("Location: ./jeux.php");
         }else{
             echo "Erreur : " . $sql_insert . "<br>" . $connexion->error;
         }

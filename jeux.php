@@ -33,11 +33,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             $sql = "INSERT INTO jouer(id_jeux, id_profil) VALUES ('$jeu', '$id')";
             if ($connexion->query($sql) === TRUE) {
                 //echo 'bien';
-                header("");
+                header("Location: ./profile.php");
             }
         }
     }
-    var_dump($jeux);
+    //var_dump($jeux);
 }
 
 ?>
