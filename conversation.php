@@ -15,18 +15,31 @@
         header("Location:index.php");
     }
 
-    if($_SERVER['REQUEST_METHOD'] == "POST") {
-        $message = $_POST['message'];
 
-        $sql_input_message = "INSERT INTO messages (conv_id, id_user, message) VALUES ('$conv_id','$sessID', '$message') ";
-        if ($connexion->query($sql_input_message) === TRUE) {
-            
+    if($_SERVER['REQUEST_METHOD'] == "POST" && !isset($_SESSION['form_submitted'])) {
+        $message = $_POST['message'];
+        if(isset($message)) {
+
+            $sql_input_message = "INSERT INTO messages (conv_id, id_user, message) VALUES ('$conv_id','$sessID', '$message') ";
+            if ($connexion->query($sql_input_message) === TRUE) {
+                echo $sql_input_message;
+            }
+            $lastMessage = $_SESSION['nom_utilisateur'] . ": " . substr($message,0,15);
+            $sql_last_message = "UPDATE conversation SET messages='$lastMessage' WHERE id='$conv_id'";
+            if ($connexion->query($sql_last_message) === TRUE) {
+                $_SESSION['message'] = $message;
+                $_SESSION['form_submitted'] = true;
+                header("Location: conversation.php?id=" . $conv_id);
+                unset($_SESSION['message']);
+
+                unset($_SESSION['form_submitted']);
+
+                exit;
+            }
+
+       
         }
-        $lastMessage = $_SESSION['nom_utilisateur'] . ": " . substr($message,0,15);
-        $sql_last_message = "UPDATE conversation SET messages='$lastMessage' WHERE id='$conv_id'";
-        if ($connexion->query($sql_last_message) === TRUE) {
-            
-        }
+
     }
 
     $idUsers = array();
@@ -85,6 +98,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="5"> <!-- Recharge la page toutes les 5 secondes -->
   <title>Business</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -155,7 +169,7 @@
     </navbar>
 
 
-    <script src="./view/chat.js"></script>
+    <!-- <script src="./view/chat.js"></script> -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         lucide.createIcons();

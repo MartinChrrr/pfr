@@ -4,8 +4,8 @@ session_start();
 //var_dump($_SESSION);
 if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisateur'] != null && $_SESSION['nom_utilisateur'] != "") {
     // Contenu de votre page
-    $id = $_SESSION['nom_utilisateur'];
-    echo "bien";
+    $id = $_SESSION['id'];
+    
 } else {
     // On retourne sur la page de connexion d'un utilisateur
     //echo "pas bien";
@@ -13,69 +13,45 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
 }
 
 
-$sql_import = "SELECT * FROM profil WHERE id = '{$id}'";
-$import = $connexion->query($sql_import);
-$row = $import->fetch_assoc();
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    $filtres = $_POST["player-horaire"];
+    array_push($filtres, $_POST["player-tags"]);
+    var_dump($filtres);
 
-// <option value="minuit">00h-3h</option>
-// <option value="trois">3h-6h</option>
-// <option value="six">6h-9h</option>
-// <option value="neuf">9h-12h</option>
-// <option value="douze">12h-15h</option>
-// <option value="quinze">15h-18h</option>
-// <option value="dixhuit">18h-21h</option>
-// <option value="vinghtun">21h-00h</option>
+
+}
+
+$profil_id = array();
+$profil_tags = array();
+$sql_import = "SELECT * FROM profil WHERE id <> '{$id}'";
+$import = $connexion->query($sql_import);
+while($row = $import->fetch_assoc()) {
+    //var_dump($row);
+    array_push($profil_id, $row['id']);
+    
+    $increment = 0;
+    $otherTags = array();
+    array_push($otherTags, explode(" ", $row['tags']));
+    var_dump($otherTags);
+    
+    
+    echo "<br><br>";
+}
+
+//var_dump($profil_id);
+
+
+
 $values = array("00h-3h", "3h-6h", "6h-9h", "9h-12h", "12h-15h", "15h-18h", "18h-21h", "21h-00h");
 $key = array ( "minuit", "trois", "six" , "neuf", "douze",  "quinze" , "dixhuit", "vingtun");
 
 $tags = array("Nul", "Nulles", "Nulle");
 
-// $horaire = array(
-//     $key[0] => $values[0],
-//     $key[1] => $values[1],
-//     $key[2] => $values[2],
-//     $key[3] => $values[3],
-//     $key[4] => $values[4],
-//     $key[5] => $values[5],
-//     $key[6] => $values[6],
-//     $key[7] => $values[7],
-
-// );
-
-// $horaire = array(
-//     "minuit" => "00h-3h",
-//     "trois" => "3h-6h",
-//     "six" => "6h-9h",
-//     "neuf" => "9h-12h",
-//     "douze"=> "12h-15h",
-//     "quinze" => "15h-18h",
-//     "dixhuit" => "18h-21h",
-//     "vingtun" => "21h-00h",
-
-// );
 
 
 
 //récupération des données
-if($_SERVER['REQUEST_METHOD'] == "POST") {
 
-    $horaire = $_POST["player-horaire"];
-    $playerTags = $_POST["player-tags"];
-    
-    $str_horaire = implode(" ",$horaire);
-    $str_tags = implode(" ",$playerTags);
-    var_dump($str_horaire);
-    var_dump($str_tags);
-
-    $sql_insertProfile = "UPDATE profil SET horaires = '$str_horaire',tags = '$str_tags'  WHERE pseudo = '{$id}'";
-        if ($connexion->query($sql_insertProfile) === TRUE) {
-            header("Location: ./jeux.php");
-        }else{
-            echo "Erreur : " . $sql_insert . "<br>" . $connexion->error;
-        }
-
-
-}
 ?>
 
 
@@ -92,10 +68,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 
 <body>
-    <header>
-        <h1>Selectionnes des tags</h1>
-        <p class="large-regular">Tes futurs amis te trouveront plus facilement <br>en filtrant vos points communs.</p>
-    </header>
+    <section class="top-bar">
+        <a href="javascript:history.go(-1)" class="return-button-top-bar">
+            <i class="button-top-bar-icon" data-lucide="arrow-left"></i>
+        </a>
+        <h4>Sélectionnes des filtres pour trouver des amis</h4>    
+    </section>
     <form action="#" method="post">
 
 
@@ -122,7 +100,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         <?php
             for($i = 0; $i < count($key); $i++) {
                 echo 
-                  "<div class='checkbox-button' onclick=toggleCheckbox('". $key[$i] ."')  >
+                    "<div class='checkbox-button' onclick=toggleCheckbox('". $key[$i] ."')  >
                         <input type='checkbox' name='player-horaire[]' value='" . $key[$i] ."' id ='". $key[$i] . "' >
                         <label for='" . $key[$i] ."'> ". $values[$i]  ."
                         </label>
@@ -163,7 +141,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         
 
         <div class="connexion-button primary500">
-            <input class="primary500" type="submit" placeholder="Continuer">
+            <input class="primary500" type="submit" value="Filtrer">
         </div>
 
 
