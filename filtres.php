@@ -15,30 +15,59 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     $filtres = $_POST["player-horaire"];
-    array_push($filtres, $_POST["player-tags"]);
-    var_dump($filtres);
+    $my_tag = $_POST["player-tags"];
+    foreach($my_tag as $_my_tag) {
+        array_push($filtres, $_my_tag);
+    }
+    //var_dump($filtres);
+
+    $profil_id = array();
+    $profil_common_tags = array();
+    $profil_tags = array();
+    $sql_import = "SELECT * FROM profil WHERE id <> '{$id}'";
+    $import = $connexion->query($sql_import);
+    while($row = $import->fetch_assoc()) {
+        array_push($profil_id, $row['id']);
+        $increment = 0;
+        $otherTags = array();
+      
+        foreach(explode(" ", $row['tags']) as $tag) {
+            array_push($otherTags, $tag);
+        }
+    
+        foreach(explode(" ", $row['horaires']) as $horaire) 
+        {
+            array_push($otherTags, $horaire);
+        }
+    
+        $profil_common_tags = array_intersect($filtres, $otherTags);
+    
+    
+        array_push($profil_tags, count($profil_common_tags));
+        
+    
+    }
+    
+    
+    
+    $order_profil = array();
+    
+    for($i = 0; $i < count($profil_tags); $i++) {
+        $order_profil[$profil_id[$i]] = $profil_tags[$i];
+    }
+    arsort($order_profil);
+    $_SESSION["list-match"] = $order_profil;
+    var_dump($_SESSION["list-match"]);
+    header("Location: match.php");
 
 
 }
 
-$profil_id = array();
-$profil_tags = array();
-$sql_import = "SELECT * FROM profil WHERE id <> '{$id}'";
-$import = $connexion->query($sql_import);
-while($row = $import->fetch_assoc()) {
-    //var_dump($row);
-    array_push($profil_id, $row['id']);
-    
-    $increment = 0;
-    $otherTags = array();
-    array_push($otherTags, explode(" ", $row['tags']));
-    var_dump($otherTags);
-    
-    
-    echo "<br><br>";
-}
 
-//var_dump($profil_id);
+
+
+
+
 
 
 
@@ -50,7 +79,6 @@ $tags = array("Nul", "Nulles", "Nulle");
 
 
 
-//récupération des données
 
 ?>
 

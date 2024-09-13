@@ -26,11 +26,12 @@
         </div>
         
             <div class="connexion-button primary500">
-                <input class="primary500" type="submit" placeholder="Se connecter">
+                <input class="primary500" type="submit" value="Se connecter">
             </div>
         
         <div class="link-connexion medium-regular">
             Vous n'avez pas de compte ? <a href="../index.php">S'inscrire</a>
+            
         </div>
         
     </form>
