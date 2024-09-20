@@ -23,13 +23,13 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
     if($verify_match->num_rows > 0) {
         while($row = $verify_match->fetch_assoc()) {
             if($id == $row['user_id2']) {
-                $connexion->query("UPDATE matching SET like_user2 = 0");
+                $connexion->query("UPDATE matching SET like_user2 = 1");
                 //header("Location: match.php");
 
             }
         }
     } else {
-        $sql_create = "INSERT INTO matching (user_id1, user_id2, like_user1) VALUES ('$id', '$other_id', 0)";
+        $sql_create = "INSERT INTO matching (user_id1, user_id2, like_user1) VALUES ('$id', '$other_id', 1)";
         if($connexion->query($sql_create) === TRUE){
             //header("Location: match.php");
         }

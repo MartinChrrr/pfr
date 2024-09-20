@@ -57,8 +57,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     arsort($order_profil);
     $_SESSION["list-match"] = $order_profil;
-    var_dump($_SESSION["list-match"]);
-    header("Location: match.php");
+    //var_dump(array_key_first($_SESSION["list-match"]));
+    header("Location: match.php?id=". array_key_first($_SESSION["list-match"]) );
 
 
 }

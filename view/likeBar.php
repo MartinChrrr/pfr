@@ -1,6 +1,6 @@
 <navbar>
     <div method="POST" action="#"  class="tab-bar">
-        <a id="home" class="like-bar-button dislike-icon" href="no.php?other_id=" . $id_other  ?>"
+        <a id="home" class="like-bar-button dislike-icon" href="no.php?id=<?php echo $_GET['id']  ?>">
             <i data-lucide="x"></i>
             
         </a>
