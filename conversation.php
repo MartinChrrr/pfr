@@ -51,7 +51,7 @@
     if($contact ->num_rows > 0) {
         while($row = $contact->fetch_assoc()) {
            
-            if($row['id_user1'] == $id) {
+            if($row['id_user1'] == $sessID) {
                 $id_user2 = $row['id_user2'];
             } else {
                 $id_user2 = $row['id_user1'];
@@ -60,6 +60,7 @@
     }
 
     $sql_other_profil = "SELECT pseudo, photo FROM profil WHERE id = '$id_user2'";
+    var_dump($id_user2);
     $sql_result = $connexion->query($sql_other_profil);
     if($sql_result ->num_rows > 0) {
         while($row = $sql_result->fetch_assoc()) {

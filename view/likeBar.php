@@ -4,7 +4,7 @@
             <i data-lucide="x"></i>
             
         </a>
-        <a class="like-bar-button like-icon " id="calendrier"  >
+        <a class="like-bar-button like-icon " id="calendrier" href="yes.php?id=<?php echo $_GET['id']  ?>"  >
             <i data-lucide="heart"></i>
          
         </a> 

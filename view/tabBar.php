@@ -8,7 +8,7 @@
             <i data-lucide="calendar-days"></i>
          
         </a> 
-        <a class="tab-main">
+        <a href="../pfr/filtres.php" class="tab-main">
             <i data-lucide="plus"></i>
         </a>
         
