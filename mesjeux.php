@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     
                 }
             }
-            header("Location: ./profile.php");
+            header("Location: ./modifier.php");
             //echo "bien";
         }
     }
@@ -80,8 +80,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <body>
     <header>
-        <h1>Selectionnes tes jeux préférés</h1>
-        <p class="large-regular">Nous te recommanderons des amis et du contenu <br>en liens avec tes préférences.</p>
+        <h1>Modifie tes jeux</h1>
+        <!-- <p class="large-regular">Nous te recommanderons des amis et du contenu <br>en liens avec tes préférences.</p> -->
     </header>
 
     <?php

@@ -217,6 +217,10 @@ body {
     margin:auto;
 }
 
+.dis-no {
+    display: none;
+}
+
 li {
     list-style: none;
 }
@@ -448,6 +452,23 @@ form .list-checkbox-button .checkbox-button:has(input:checked) {
     outline: 1px solid #2B6EA4;
     background-color: #2B6EA4;
     color: white;
+}
+
+.titre_liste {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.titre_liste p {
+    margin: auto;
+}
+
+.titre_liste svg {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
 
 
@@ -782,17 +803,27 @@ header {
 
 
 .messages-container .incoming {
-   
-    display: flex;
+    padding: 1rem;
+    width: fit-content;
+    max-width: 60%;
+    background-color:#35383F;
+    margin-top: 1rem;
+    border-radius: 24px 24px 0 24px;
+    align-self: end;
+}
+
+.messages-container .incoming p {
+    text-align: justify;
 }
 
 .messages-container .chat {
-    width: auto;
+    width: fit-content;
     max-width: 60%;
 }
 
 .messages-container .chat p {
-    width: auto;
+    width: fit-content;
+    margin-bottom: 0;
 }
 
 .messages-container .incoming img {
@@ -802,9 +833,16 @@ header {
 }
 
 .messages-container .outgoing {
-    
-    width: auto;
+    padding: 1rem;
+    width: fit-content;
     max-width: 60%;
+    background-color:#2B6EA4;
+    margin-top: 1rem;
+    border-radius: 24px 24px 24px 0;
+}
+
+.messages-container .outgoing p {
+    margin-bottom: 0;
 }
 
 .message-bar form{

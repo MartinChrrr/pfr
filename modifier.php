@@ -65,14 +65,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
 
-    <title>Ton Profile</title>
+    <title>Modifie ton profile</title>
 
 </head>
 
 <body>
     <header>
-        <h1>Selectionnes des tags</h1>
-        <p class="large-regular">Tes futurs amis te trouveront plus facilement <br>en filtrant vos points communs.</p>
+        <h1>Modifie ton profile</h1>
+        <!-- <p class="large-regular">Tes futurs amis te trouveront plus facilement <br>en filtrant vos points communs.</p> -->
     </header>
     <form action="#" method="post">
 
@@ -92,7 +92,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     if($donneeGenre == "humain") echo " selected ";
                 ?>
                 >
-                >Humain</option>
+                Humain</option>
                 <option value="robot"                 
                 <?php
                     if($donneeGenre == "robot") echo " selected ";
@@ -129,9 +129,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         <div class="field dark2">
             <textarea class="dark2" type="text" name="stream" placeholder="Ton lien Twitch" rows="1"><?php echo $donneeStream;?></textarea>
         </div>
-        <p>Horaires De jeux</p>
+        <div class="titre_liste">
+            <p>Horaires De jeux</p>
+            <i class="" id="chevronOffHoraire" data-lucide="chevron-up" onclick="showOnHoraire()"></i>
+            <i class="" id="chevronOnHoraire" data-lucide="chevron-down" onclick="showOffHoraire()"></i>
+        </a>
+        </div>
+        
 
-        <div class="list-checkbox-button">
+        <div class="list-checkbox-button" id="liste_horaire">
         <?php
             for($i = 0; $i < count($key); $i++) {
                 echo 
@@ -161,14 +167,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
         <p>Tags de Jeux</p>
 
-        <div class="list-checkbox-button">
+        <div class="list-checkbox-button" id="liste_tags">
             <?php
             for($i = 0; $i < count($tags); $i++) {
                 echo "<div class='checkbox-button'>
                 <input type='checkbox' name='player-tags[]' value='" . $tags[$i] ."' id ='". $tags[$i] . "' " ; 
                 for($j = 0; $j < count($donneeTags); $j++) {
-                    
-
                         if($tags[$i] == $donneeTags[$j]) {
                             echo " checked ";
                         }
@@ -191,7 +195,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         
 
         <div class="connexion-button primary500">
-            <input class="primary500" type="submit" placeholder="Continuer">
+            <input class="primary500" type="submit" value="Enregistrer">
         </div>
 
 
