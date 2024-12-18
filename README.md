@@ -6,5 +6,5 @@
 
 ### Work
 
-Create UI and UX
-Develop Front and Back
+* Create UI and UX
+* Develop Front and Back
